@@ -1,13 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 // could use one line instead: var router = require('express').Router();
 var tweetBank = require('../tweetBank');
 var nunjucks = require('nunjucks');
 
 nunjucks.configure('views', {noCache: true});
-app.set('view engine', 'html');
-app.engine('html', nunjucks.render);
 
+//router.use(express.static('public'));
 
 router.get('/', function (req, res) {
   var tweets = tweetBank.list();
@@ -16,7 +16,7 @@ router.get('/', function (req, res) {
 
 module.exports = router;
 
-app.get('/', function(request, response){
+router.get('/', function(request, response){
   // response.statusCode = 200;
   // console.log(response.statusCode);
   // response.status(200);
@@ -30,16 +30,16 @@ app.get('/', function(request, response){
 
 });
 
-app.get('/news', function(request, response){
+
+router.get('/news', function(request, response){
   response.send('welcome to our fake twitter news page!');
 });
 
 
-app.listen(port, function(){
-  console.log("server is listening on port "+ port)
-});
+// router.get('/stylesheets/style.css', function(request,response){
+//   response.sendFile('/stylesheets/style.css')
+// })
 
-
-app.use('/special/', function(request, response){
+router.use('/special/', function(request, response){
   console.log("you've reached the special page");
 })
