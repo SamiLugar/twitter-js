@@ -1,5 +1,6 @@
 html,
 body {
+
   height: 100%;
   /* The html and body elements cannot have any padding or margin. */
 }
@@ -46,9 +47,10 @@ code {
 }
 
 .tweetbox img {
+  margin-right: 7px;
   float: left;
   height: 48px;
-  width: 48px;
+  width: auto;
   content:url("http://lorempixel.com/48/48");
 }
 .content {
@@ -56,4 +58,21 @@ code {
 }
 .content .by {
   font-weight: bold;
+}
+
+.page-header {
+
+}
+
+li {
+  list-style: none;
+}
+
+#name {
+  font-weight: bold;
+  color: #000;
+}
+
+#tweet {
+  color: #000;
 }

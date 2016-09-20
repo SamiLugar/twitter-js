@@ -1,9 +1,10 @@
 {% extends "layout.html" %}
+<link href="/stylesheets/style.css" rel="stylesheet">
 
 {% block content %}
 
-  <div class="page-header">
-    <h1>Welcome to Twitter.js!</h1>
+  <div class="page-header" style="padding-top: 50px">
+    <h1 >Welcome to Twitter.js!</h1>
   </div>
   <div class="row">
     <div class="col-md-3">
@@ -12,11 +13,42 @@
       100 followers
     </div>
     <div class="col-md-9">
+      <h3> All Tweets </h3>
+      {% if showForm %}
+        <form action="/tweets" method="POST">
+          <label for="name_field">Name:</label>
+          <input name="name" type="text" id="name_field" value={{name}}/>
 
+          <label for="text_field">Text:</label>
+          <input name="text" type="text" id="text_field" style="width: 350px;" />
+
+          <input type="submit" value="Submit" />
+        </form>
+      {% endif %}
       <!-- display tweets here -->
+      <div id = "tweet-stream">
       {% for tweet in tweets %}
-        <li>{{tweet.content}}</li>
+        <li>
+          <div class = "tweetbox">
+            <img/>
+            <a id = 'name' href="/users/{{tweet.name}}">{{tweet.name}}</a>
+            <p><a id = 'tweet' href="/tweets/{{tweet.id}}">{{tweet.content}}</a></p>
+            <a href="">Re-tweet</a>
+          </div>
+        </li>
       {% endfor %}
+      </div>
+
+      <!-- <div id = "temp-tweet">
+        <li>
+          <div class = "tweetbox">
+            <img/>
+            <a id = 'name' href="/users/{{tweet.name}}">{{tweet.name}}</a>
+            <p><a id = 'tweet' href="/tweets/{{tweet.id}}">{{tweet.content}}</a></p>
+            <a href="">Re-tweet</a>
+          </div>
+        </li>
+      </div> -->
 
     </div>
   </div>

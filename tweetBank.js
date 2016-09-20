@@ -1,10 +1,11 @@
 var _ = require('lodash');
 
-var data = [{ name: 'Gabriel Dunderproto',
-    content: 'Fullstack Academy is amazing! The instructors are just so amazing. #fullstacklove #codedreams' }];
+var data = []
+var counter = 0;
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+
+  data.push({ name: name, content: content, id: ++counter + '' });
 }
 
 function list () {
